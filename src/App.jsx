@@ -1,7 +1,7 @@
 
 import React from 'react'
 import './App.css'
-import { UploadVideo } from './views/Uploadvideo.jsx'
+import UploadVideo from './views/Uploadvideo.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
