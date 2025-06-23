@@ -13,7 +13,6 @@ Este proyecto es una aplicación web que permite a los usuarios subir videos par
 
 - **Backend (en desarrollo):**
   - Python con FastAPI
-  - Whisper (para transcripción)
   - Transformers o API de OpenAI (para resumen)
 
 ---
