@@ -1,24 +1,12 @@
-
 import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 
 const UploadVideo = () => {
   const [videoFile, setVideoFile] = useState(null);
-  const [videoBase64, setVideoBase64] = useState('');
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setVideoFile(file);
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const base64String = reader.result.split(',')[1]; 
-        setVideoBase64(base64String);
-        console.log('Base64 del video:', base64String.slice(0, 100) + '...'); 
-      };
-      reader.readAsDataURL(file); 
-    }
+    setVideoFile(file || null);
   };
 
   const handleSubmit = (e) => {
@@ -29,7 +17,8 @@ const UploadVideo = () => {
       return;
     }
 
-    alert('Video convertido a Base64. Revisa la consola del navegador.');
+    alert('Video seleccionado: ' + videoFile.name);
+    // Aquí podrías enviar el archivo a un backend si lo necesitas
   };
 
   return (
@@ -45,16 +34,24 @@ const UploadVideo = () => {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Convertir a Base64
+          Subir Video
         </Button>
       </Form>
 
-      {videoBase64 && (
+      {videoFile && (
         <div className="mt-4">
-          <h5>Base64 generado (vista parcial):</h5>
-          <code style={{ fontSize: '0.75rem', wordBreak: 'break-all' }}>
-            {videoBase64.slice(0, 300)}...
-          </code>
+          <h5>Información del video seleccionado:</h5>
+          <ul>
+            <li><strong>Nombre:</strong> {videoFile.name}</li>
+            <li><strong>Tamaño:</strong> {(videoFile.size / (1024 * 1024)).toFixed(2)} MB</li>
+            <li><strong>Tipo:</strong> {videoFile.type}</li>
+          </ul>
+          <video
+            src={URL.createObjectURL(videoFile)}
+            controls
+            width="320"
+            className="mt-2"
+          />
         </div>
       )}
     </Container>
