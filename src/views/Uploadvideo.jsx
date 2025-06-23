@@ -1,60 +1,31 @@
 import React, { useState, useRef } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
+import {
+  handleFileChange,
+  handleDragOver,
+  handleDragLeave,
+  handleDrop,
+  handleSubmit,
+} from '../utils/VideosUtils';
 
 const UploadVideo = () => {
   const [videoFile, setVideoFile] = useState(null);
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef(null);
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setVideoFile(file || null);
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(true);
-  };
-
-  const handleDragLeave = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      setVideoFile(e.dataTransfer.files[0]);
-    }
-  };
-
   const handleZoneClick = () => {
     inputRef.current.click();
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!videoFile) {
-      alert('Seleccione un archivo de video');
-      return;
-    }
-    alert('Video seleccionado: ' + videoFile.name);
-    // Envio del video al backend
   };
 
   return (
     <Container className="mt-5">
       <h2 className="mb-4">Subir Video</h2>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={e => handleSubmit(e, videoFile)}>
         <div
           onClick={handleZoneClick}
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          onDrop={handleDrop}
+          onDragOver={e => handleDragOver(e, setDragActive)}
+          onDragLeave={e => handleDragLeave(e, setDragActive)}
+          onDrop={e => handleDrop(e, setVideoFile, setDragActive)}
           style={{
             border: dragActive ? '2px solid #007bff' : '2px dashed #ccc',
             borderRadius: 8,
@@ -71,7 +42,7 @@ const UploadVideo = () => {
           <Form.Control
             type="file"
             accept="video/*"
-            onChange={handleFileChange}
+            onChange={e => handleFileChange(e, setVideoFile)}
             ref={inputRef}
             style={{ display: 'none' }}
           />
