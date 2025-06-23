@@ -1,12 +1,32 @@
-# React + Vite
+# 🎬 Procesador de Videos con Resumen Automático
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación web que permite a los usuarios subir videos para obtener automáticamente una transcripción y un resumen textual del contenido, utilizando inteligencia artificial.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologías Utilizadas
 
-## Expanding the ESLint configuration
+- **Frontend:**
+  - React
+  - Bootstrap
+  - React-Bootstrap
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Backend (en desarrollo):**
+  - Python con FastAPI
+  - Whisper (para transcripción)
+  - Transformers o API de OpenAI (para resumen)
+
+---
+
+## 📦 Instalación
+
+### Requisitos:
+- Node.js y npm
+- Git
+
+### Clonar el proyecto
+
+```bash
+git clone https://github.com/tu-usuario/procesador-videos.git
+cd procesador-videos
+
