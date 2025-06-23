@@ -29,6 +29,9 @@ npm install bootstrap
 # 3. Instalar react-bootstrap (opcional pero recomendado)
 npm install react-bootstrap
 
+# 4. Instalar react-icos (esto es para la vista principal)
+npm install react-icons
+
 ### Requisitos:
 - Node.js y npm
 - Git
