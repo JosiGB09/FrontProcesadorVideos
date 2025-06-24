@@ -1,13 +1,9 @@
-
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css'
 import UploadVideo from './views/Uploadvideo.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return ( <UploadVideo />
-  )
+  return <UploadVideo />
 }
 
 export default App
