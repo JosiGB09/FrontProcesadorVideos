@@ -8,6 +8,7 @@ import {
   handleDrop,
   handleSubmit,
   downloadTranscription,
+  formatTime,
 } from '../utils/VideosUtils';
 
 /**
@@ -236,7 +237,7 @@ const UploadVideo = () => {
                         "{word.text}"
                       </span>
                       <div className="d-flex flex-wrap gap-3 mt-2 mt-md-0" style={{ fontSize: '0.98rem' }}>
-                        <span><strong>Tiempo:</strong> {Number(word.start)/1000}s - {Number(word.end)/1000}s</span>
+                        <span><strong>Tiempo:</strong> {formatTime(Number(word.start))} - {formatTime(Number(word.end))}</span>
                         <span><strong>Confianza:</strong> <span className={word.confidence > 0.8 ? 'text-success' : word.confidence > 0.6 ? 'text-warning' : 'text-danger'}>{(word.confidence * 100).toFixed(1)}%</span></span>
                         <span><FaUser className="me-1" /><strong>Hablante:</strong> {word.speaker}</span>
                         <span><strong>Posición:</strong> #{index + 1}</span>

@@ -50,6 +50,24 @@
   * @param {Array<Object>} transcriptionData.words - Palabras detalladas con tiempos y confianza.
   * @param {string} [transcriptionData.summary] - Resumen de la transcripción (opcional).
   */
+
+/**
+ * Formatea un tiempo en milisegundos a un formato legible (segundos o minutos).
+ * @param {number} milliseconds - Tiempo en milisegundos.
+ * @returns {string} Tiempo formateado en segundos o minutos.
+ */
+export function formatTime(milliseconds) {
+  const seconds = milliseconds / 1000;
+  
+  if (seconds < 60) {
+    return `${seconds.toFixed(1)}s`;
+  } else {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}m ${remainingSeconds.toFixed(1)}s`;
+  }
+}
+
 import { transcriptionService } from '../services/transcriptionService.js';
 
 export function handleFileChange(e, setVideoFile) {
