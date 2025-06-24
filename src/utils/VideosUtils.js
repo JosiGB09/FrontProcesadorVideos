@@ -30,6 +30,21 @@ export function handleSubmit(e, videoFile) {
     alert('Seleccione un archivo de video');
     return;
   }
-  alert('Video seleccionado: ' + videoFile.name);
-  // Envio a backend
+
+  const formData = new FormData();
+  formData.append('video', videoFile);
+
+  fetch('http://localhost:8000/upload', { 
+    method: 'POST',
+    body: formData,
+  })
+    .then(response => response.json())
+    .then(data => {
+      alert('Video enviado correctamente');
+      // Puedes manejar la respuesta aquí
+    })
+    .catch(error => {
+      alert('Error al enviar el video');
+      console.error(error);
+    });
 }
