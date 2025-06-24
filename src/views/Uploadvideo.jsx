@@ -10,7 +10,33 @@ import {
   downloadTranscription,
 } from '../utils/VideosUtils';
 
+/**
+ * UploadVideo
+ * 
+ * Vista principal para subir, procesar y visualizar la transcripción de videos.
+ * Permite a los usuarios cargar un archivo de video, iniciar el procesamiento automático
+ * (transcripción y resumen), y navegar entre pestañas para ver el progreso, los resultados
+ * detallados de la transcripción y un resumen del contenido.
+ * 
+ * Características:
+ * - Zona de arrastrar y soltar para seleccionar videos.
+ * - Visualización del estado de procesamiento con animación de carga.
+ * - Pestañas para subir video, ver transcripción detallada y resumen del texto.
+ * - Descarga de resultados de transcripción.
+ * - Estadísticas y análisis de palabras transcritas.
+ * 
+ * Estados:
+ * - videoFile: Archivo de video seleccionado por el usuario.
+ * - dragActive: Indica si el usuario está arrastrando un archivo sobre la zona de carga.
+ * - isProcessing: Indica si el video está siendo procesado.
+ * - transcriptionData: Datos de la transcripción y resumen generados por el backend.
+ * - activeTab: Pestaña activa en la interfaz.
+ * 
+ * @component
+ * @returns {JSX.Element} Interfaz de usuario para subir y procesar videos con transcripción automática.
+ */
 const UploadVideo = () => {
+  
   const [videoFile, setVideoFile] = useState(null);
   const [dragActive, setDragActive] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);

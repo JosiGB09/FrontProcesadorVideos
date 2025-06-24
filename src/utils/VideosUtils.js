@@ -1,3 +1,55 @@
+/**
+ * @file VideosUtils.js
+ * @description Utilidades para la gestión de archivos de video, manejo de eventos de carga/arrastre, procesamiento de transcripción y descarga de resultados.
+ * @module utils/VideosUtils
+ */
+
+ /**
+  * Maneja el evento de cambio de archivo en un input de tipo file.
+  * @param {Event} e - Evento de cambio del input.
+  * @param {Function} setVideoFile - Función para actualizar el estado del archivo de video seleccionado.
+  */
+ 
+ /**
+  * Maneja el evento de arrastre sobre el área de drop.
+  * @param {Event} e - Evento de drag over.
+  * @param {Function} setDragActive - Función para actualizar el estado de arrastre activo.
+  */
+ 
+ /**
+  * Maneja el evento cuando el archivo deja el área de drop.
+  * @param {Event} e - Evento de drag leave.
+  * @param {Function} setDragActive - Función para actualizar el estado de arrastre activo.
+  */
+ 
+ /**
+  * Maneja el evento de soltar archivo en el área de drop.
+  * @param {Event} e - Evento de drop.
+  * @param {Function} setVideoFile - Función para actualizar el estado del archivo de video seleccionado.
+  * @param {Function} setDragActive - Función para actualizar el estado de arrastre activo.
+  */
+ 
+ /**
+  * Maneja el envío del formulario para procesar el archivo de video y obtener la transcripción.
+  * @async
+  * @param {Event} e - Evento de submit del formulario.
+  * @param {File|null} videoFile - Archivo de video seleccionado.
+  * @param {Function} setIsProcessing - Función para actualizar el estado de procesamiento.
+  * @param {Function} setTranscriptionData - Función para actualizar los datos de transcripción recibidos.
+  */
+ 
+ /**
+  * Descarga la transcripción y detalles en un archivo de texto.
+  * @param {Object} transcriptionData - Datos de la transcripción generados por el backend.
+  * @param {string} transcriptionData.id - ID de la transcripción.
+  * @param {string} transcriptionData.language_model - Modelo de lenguaje utilizado.
+  * @param {string} transcriptionData.acoustic_model - Modelo acústico utilizado.
+  * @param {string} transcriptionData.language_code - Código de idioma.
+  * @param {string} transcriptionData.status - Estado de la transcripción.
+  * @param {string} transcriptionData.text - Texto completo transcrito.
+  * @param {Array<Object>} transcriptionData.words - Palabras detalladas con tiempos y confianza.
+  * @param {string} [transcriptionData.summary] - Resumen de la transcripción (opcional).
+  */
 import { transcriptionService } from '../services/transcriptionService.js';
 
 export function handleFileChange(e, setVideoFile) {

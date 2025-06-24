@@ -1,3 +1,9 @@
+/**
+ * Servicio para manejar la transcripción de videos.
+ * Proporciona métodos para subir archivos de video al backend para su procesamiento.
+ *
+ * @namespace transcriptionService
+ */
 import { getApiUrl, getUploadHeaders, API_CONFIG } from '../config/api.js';
 
 export const transcriptionService = {
